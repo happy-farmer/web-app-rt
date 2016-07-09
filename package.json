@@ -4,7 +4,8 @@
   "description": "Happy Farmer client (Webpack + React)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "webpack --config webpack.dev.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,12 @@
     "babel-preset-react": "6.11.1",
     "stats-webpack-plugin": "0.4.0",
     "webpack": "1.13.1"
+  },
+  "dependencies": {
+    "react": "15.2.1",
+    "react-dom": "15.2.1",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0"
   }
 }

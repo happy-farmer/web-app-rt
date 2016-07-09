@@ -1,5 +1,5 @@
 /**
- * @module main
+ * @module index
  * @description Application's entry point
  */
 
