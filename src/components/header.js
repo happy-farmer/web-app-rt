@@ -4,14 +4,15 @@
  */
 
 import React, { PropTypes } from 'react'
+import logo from '../assets/logo.png'
 
 const Header = ({ userData }) => {
   // let { isLoggedIn, isFetching, data } = userData
   return (
     <header>
       <a className='logo' href='#/'>
-        <img src='/assets/logo.png' />
-        <span>Happy Farmer Yo!</span>
+        <img src={logo} alt='Happy Farmer' />
+        <span>Happy Farmer!</span>
       </a>
       <form>
         <input
