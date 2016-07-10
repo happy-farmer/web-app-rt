@@ -12,11 +12,18 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      include: path.join(__dirname, 'src'),
-      loader: 'babel'
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'babel'
+      },
+      {
+        test: /\.(jpe?g|png)$/,
+        include: path.join(__dirname, 'src/assets'),
+        loader: 'url?limit=25000'
+      }
+    ]
   },
   plugins: [
     new StatsPlugin('stats.json', {
