@@ -4,7 +4,7 @@
  */
 
 import React, { PropTypes } from 'react'
-import logo from '../assets/logo.png'
+import logo from '../images/logo.png'
 
 const Header = ({ userData }) => {
   // let { isLoggedIn, isFetching, data } = userData

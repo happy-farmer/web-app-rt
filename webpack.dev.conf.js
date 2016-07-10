@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png)$/,
-        include: path.join(__dirname, 'src/assets'),
+        include: path.join(__dirname, 'src/images'),
         loader: 'url?limit=25000'
       }
     ]
