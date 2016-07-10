@@ -5,6 +5,7 @@
 
 import React, { PropTypes } from 'react'
 import logo from '../images/logo.png'
+import '../styles/header.css'
 
 const Header = ({ userData }) => {
   // let { isLoggedIn, isFetching, data } = userData
@@ -14,7 +15,7 @@ const Header = ({ userData }) => {
         <img src={logo} alt='Happy Farmer' />
         <span>Happy Farmer!</span>
       </a>
-      <form>
+      <form className='login-form'>
         <input
           type='button'
           data-provider='facebook'
