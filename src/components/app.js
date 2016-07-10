@@ -9,7 +9,7 @@ import Header from './header'
 
 let App = () => {
   return (
-    <div class='wrapper'>
+    <div className='wrapper'>
       <Header />
       <main></main>
       <footer></footer>
