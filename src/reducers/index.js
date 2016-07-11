@@ -5,7 +5,8 @@
 
 import { combineReducers } from 'redux'
 
-import authReducer from './auth'
+// import userData from './userData'
+import marketsData from './marketsData'
 
 /* Shape for the state data
   {
@@ -15,11 +16,17 @@ import authReducer from './auth'
       isFetching: false,
       data: {}
     }
+    marketsData: {
+      query: null,
+      isFetching: false,
+      data: []
+    }
   }
 */
 
-const appReducer = combineReducers({
-  authReducer
+const appReducers = combineReducers({
+  // userData,
+  marketsData
 })
 
-export default appReducer
+export default appReducers
