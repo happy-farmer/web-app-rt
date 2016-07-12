@@ -6,21 +6,21 @@
 import 'whatwg-fetch'
 import conf from 'app.conf.json'
 
-export function requestMarkets (query) {
-  return { type: 'REQUEST_MARKETS', query }
+export function requestMarketsList (query) {
+  return { type: 'REQUEST_MARKETS_LIST', query }
 }
 
-export function receiveMarkets (data) {
-  return { type: 'RECEIVE_MARKETS', data }
+export function receiveMarketsList (data) {
+  return { type: 'RECEIVE_MARKETS_LIST', data }
 }
 
-export function resetMarkets () {
-  return { type: 'RESET_MARKETS' }
+export function resetMarketsList () {
+  return { type: 'RESET_MARKETS_LIST' }
 }
 
-export function fetchMarkets (query) {
+export function fetchMarketsList (query) {
   return function (dispatch) {
-    dispatch(requestMarkets(query))
+    dispatch(requestMarketsList(query))
     return fetch(
       conf.marketsUri
     )
@@ -28,7 +28,7 @@ export function fetchMarkets (query) {
       (resp) => resp.json()
     )
     .then(
-      (data) => dispatch(receiveMarkets(data))
+      (data) => dispatch(receiveMarketsList(data))
     )
   }
 }

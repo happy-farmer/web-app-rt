@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   let {
     isFetching,
     data
-  } = state.marketsData
+  } = state.marketsListData
 
   return {
     isFetching,

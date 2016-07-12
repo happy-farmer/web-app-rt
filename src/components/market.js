@@ -4,10 +4,15 @@
  */
 
 import React, { PropTypes } from 'react'
+import {Link} from 'react-router'
 
 const Market = ({name, location, id}) => (
   <section className='user-timeline-item'>
-    <h2>{name}</h2>
+    <h3>
+      <Link to={`/markets/${id}`} title={name}>
+        {name}
+      </Link>
+    </h3>
   </section>
 )
 

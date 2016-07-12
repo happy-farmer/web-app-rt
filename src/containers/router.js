@@ -6,17 +6,23 @@
 import { connect } from 'react-redux'
 import Component from '../components/router'
 import {
-  fetchMarkets,
-  resetMarkets
+  fetchMarketsList,
+  resetMarketsList
 } from '../actions/markets'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onMarketsEnter (ev) {
-      dispatch(fetchMarkets())
+    onMarketsListEnter (ev) {
+      dispatch(fetchMarketsList())
     },
-    onMarketsLeave (ev) {
-      dispatch(resetMarkets())
+    onMarketsListLeave (ev) {
+      dispatch(resetMarketsList())
+    },
+    onMarketsItemEnter (ev) {
+      dispatch(fetchMarketsList())
+    },
+    onMarketsItemLeave (ev) {
+      dispatch(resetMarketsList())
     }
   }
 }

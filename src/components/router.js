@@ -4,19 +4,24 @@
  */
 
 import React from 'react'
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 import App from '../components/app'
 import Markets from '../containers/markets'
 
 let RouterProxy = ({
-  onMarketsEnter,
-  onMarketsLeave
+  onMarketsListEnter,
+  onMarketsItemEnter
 }) => (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route component={App}>
       <Route
         path='/'
-        onEnter={onMarketsEnter}
+        onEnter={onMarketsListEnter}
+        component={Markets}
+      />
+      <Route
+        path='/markets/:id'
+        onEnter={onMarketsItemEnter}
         component={Markets}
       />
     </Route>
