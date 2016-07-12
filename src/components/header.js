@@ -26,7 +26,7 @@ const Header = ({ userData }) => {
           <a
             data-provider='twitter'
             title='Login with Twitter'
-            className='login-button login-tweeter'>
+            className='login-button login-twitter'>
             <i className='fa fa-twitter-square fa-2x' aria-hidden='true'></i>
           </a>
           <a
