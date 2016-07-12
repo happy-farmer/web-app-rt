@@ -1,3 +1,26 @@
 .login-form {
   float: right;
 }
+
+.login-button {
+  margin-left: 5px;
+
+  &:hover {
+    color: #000;
+  }
+}
+.login-facebook {
+  color: #3b5998;
+}
+.login-twitter {
+  color: #1da1f2;
+}
+.login-google {
+  color: #db4437;
+}
+
+.hpf-logo {
+  width: 35px;
+  float: left;
+  margin-right: 10px;
+}

@@ -9,9 +9,9 @@ import React from 'react'
 import Header from '../components/header'
 
 let App = ({children}) => (
-  <div className='wrapper'>
+  <div>
     <Header />
-    <main>
+    <main className='container'>
       {children}
     </main>
     <footer></footer>

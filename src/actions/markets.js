@@ -4,6 +4,7 @@
 
 /* global fetch */
 import 'whatwg-fetch'
+import conf from 'app.conf.json'
 
 export function requestMarkets (query) {
   return { type: 'REQUEST_MARKETS', query }
@@ -21,7 +22,7 @@ export function fetchMarkets (query) {
   return function (dispatch) {
     dispatch(requestMarkets(query))
     return fetch(
-      'http://localhost:3004/markets/'
+      conf.marketsUri
     )
     .then(
       (resp) => resp.json()

@@ -1,12 +1,14 @@
 var path = require('path')
-var precss = require('precss')
 var autoprefixer = require('autoprefixer')
 var StatsPlugin = require('stats-webpack-plugin')
 
 module.exports = {
   devtool: 'eval',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'app.conf.json': path.join(__dirname, 'src/app.dev.conf.json')
+    }
   },
   entry: './src',
   output: {
@@ -15,6 +17,9 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /\.jsx?$/,
         include: path.join(__dirname, 'src'),
@@ -26,14 +31,18 @@ module.exports = {
         loader: 'url?limit=25000'
       },
       {
-        test: /\.css$/,
+        test: /.(ico|gif|svg|eot|ttf|woff|woff2)(\?.+)?$/,
+        loader: 'url?limit=50000'
+      },
+      {
+        test: /\.s?css$/,
         include: path.join(__dirname, 'src/styles'),
-        loader: 'style-loader!css-loader!postcss-loader'
+        loader: 'style-loader!css-loader!sass-loader!postcss-loader'
       }
     ]
   },
   postcss: function () {
-    return [precss, autoprefixer]
+    return [autoprefixer]
   },
   plugins: [
     new StatsPlugin('stats.json', {
