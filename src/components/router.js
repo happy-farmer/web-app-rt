@@ -6,7 +6,8 @@
 import React from 'react'
 import { Router, Route, browserHistory } from 'react-router'
 import App from '../components/app'
-import Markets from '../containers/markets'
+import MarketsList from '../containers/marketsList'
+import MarketsItem from '../containers/marketsItem'
 
 let RouterProxy = ({
   onMarketsListEnter,
@@ -17,12 +18,12 @@ let RouterProxy = ({
       <Route
         path='/'
         onEnter={onMarketsListEnter}
-        component={Markets}
+        component={MarketsList}
       />
       <Route
         path='/markets/:id'
         onEnter={onMarketsItemEnter}
-        component={Markets}
+        component={MarketsItem}
       />
     </Route>
   </Router>

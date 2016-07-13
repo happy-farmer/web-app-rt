@@ -1,12 +1,12 @@
 /**
- * @module components/market
+ * @module components/marketsListItem
  *
  */
 
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
 
-const Market = ({name, location, id}) => (
+const MarketsListItem = ({name, location, id}) => (
   <section className='user-timeline-item'>
     <h3>
       <Link to={`/markets/${id}`} title={name}>
@@ -16,10 +16,10 @@ const Market = ({name, location, id}) => (
   </section>
 )
 
-Market.propTypes = {
+MarketsListItem.propTypes = {
   name: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired
 }
 
-export default Market
+export default MarketsListItem

@@ -1,9 +1,9 @@
 /**
- * @module containers/markets
+ * @module containers/marketsList
  */
 
 import { connect } from 'react-redux'
-import Component from '../components/markets'
+import Component from '../components/marketsList'
 
 const mapStateToProps = (state) => {
   let {
@@ -17,8 +17,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const Markets = connect(
+const MarketsList = connect(
   mapStateToProps
 )(Component)
 
-export default Markets
+export default MarketsList

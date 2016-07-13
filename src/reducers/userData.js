@@ -1,5 +1,5 @@
 /**
- * @module reducers/auth
+ * @module reducers/userData
  */
 
 const DEFAULT = {
@@ -8,7 +8,7 @@ const DEFAULT = {
   isFetching: false,
   data: {}
 }
-function auth (state = DEFAULT, action) {
+function userData (state = DEFAULT, action) {
   switch (action.type) {
     case 'SET_USER':
       return Object.assign({}, state, action.userData)
@@ -19,4 +19,4 @@ function auth (state = DEFAULT, action) {
   }
 }
 
-export default auth
+export default userData

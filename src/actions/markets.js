@@ -32,3 +32,30 @@ export function fetchMarketsList (query) {
     )
   }
 }
+
+export function requestMarketsItem (query) {
+  return { type: 'REQUEST_MARKETS_ITEM', query }
+}
+
+export function receiveMarketsItem (data) {
+  return { type: 'RECEIVE_MARKETS_ITEM', data }
+}
+
+export function resetMarketsItem () {
+  return { type: 'RESET_MARKETS_ITEM' }
+}
+
+export function fetchMarketsItem (id) {
+  return function (dispatch) {
+    dispatch(requestMarketsList(id))
+    return fetch(
+      `${conf.marketsUri}/${id}`
+    )
+    .then(
+      (resp) => resp.json()
+    )
+    .then(
+      (data) => dispatch(receiveMarketsList(data))
+    )
+  }
+}

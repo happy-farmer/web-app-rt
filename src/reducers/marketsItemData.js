@@ -1,30 +1,30 @@
 /**
- * @module reducers/marketsListData
+ * @module reducers/marketsItemData
  */
 
 const DEFAULT = {
-  query: null,
+  id: null,
   isFetching: false,
-  data: []
+  data: {}
 }
-function marketsListData (state = DEFAULT, action) {
+function marketsItemData (state = DEFAULT, action) {
   switch (action.type) {
-    case 'REQUEST_MARKETS_LIST':
+    case 'REQUEST_MARKETS_ITEM':
       return Object.assign({}, state, {
         isFetching: true,
-        query: action.query,
-        data: []
+        id: action.id,
+        data: {}
       })
-    case 'RECEIVE_MARKETS_LIST':
+    case 'RECEIVE_MARKETS_ITEM':
       return Object.assign({}, state, {
         isFetching: false,
         data: action.data
       })
-    case 'RESET_MARKETS_LIST':
+    case 'RESET_MARKETS_ITEM':
       return Object.assign({}, state, DEFAULT)
     default:
       return state
   }
 }
 
-export default marketsListData
+export default marketsItemData
