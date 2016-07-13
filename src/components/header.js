@@ -6,16 +6,17 @@
 import React, { PropTypes } from 'react'
 import logo from '../images/logo.png'
 import '../styles/header.css'
+import {Link} from 'react-router'
 
 const Header = ({ userData }) => {
   // let { isLoggedIn, isFetching, data } = userData
   return (
     <header>
       <nav className='navbar navbar-static-top navbar-light bg-faded'>
-        <img className='hpf-logo' src={logo} alt='Happy Farmer' />
-        <a className='navbar-brand' href='#/'>
+        <Link className='navbar-brand' to='/'>
+          <img className='hpf-logo' src={logo} alt='Happy Farmer' />
           <span>Happy Farmer!</span>
-        </a>
+        </Link>
         <form className='login-form'>
           <a
             data-provider='facebook'
