@@ -14,7 +14,7 @@ const Header = ({ userData }) => {
     <header>
       <nav className='navbar navbar-static-top navbar-light bg-faded'>
         <Link className='navbar-brand' to='/'>
-          <img className='hpf-logo' src={logo} alt='Happy Farmer' />
+          <img className='logo' src={logo} alt='Happy Farmer' />
           <span>Happy Farmer!</span>
         </Link>
         <form className='login-form'>
