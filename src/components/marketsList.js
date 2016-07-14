@@ -5,11 +5,16 @@
 
 import React, { PropTypes } from 'react'
 import MarketsListItem from './marketsListItem'
+import Loader from './loader'
 
 const MarketsList = ({isFetching, data}) => (
-  <div>
-    {data.map((el, ix) => <MarketsListItem key={ix} {...el} />)}
-  </div>
+  isFetching
+  ? <Loader />
+  : (
+    <div className='markets-list'>
+        {data.map((el, ix) => <MarketsListItem key={ix} {...el} />)}
+    </div>
+  )
 )
 
 MarketsList.propTypes = {

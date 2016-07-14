@@ -7,7 +7,7 @@ import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
 
 const MarketsListItem = ({name, location, id}) => (
-  <section className='user-timeline-item'>
+  <section className='markets-list-item'>
     <h3>
       <Link to={`/markets/${id}`} title={name}>
         {name}

@@ -4,11 +4,20 @@
  */
 
 import React, { PropTypes } from 'react'
+import Loader from './loader'
+
+const Item = ({name}) => (
+  <article className='markets-item'>
+    <h3>{name}</h3>
+  </article>
+)
+
+Item.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 const MarketsItem = ({isFetching, data}) => (
-  <article className='user-timeline-item'>
-    <h3>{data.name}</h3>
-  </article>
+  isFetching ? <Loader /> : <Item {...data} />
 )
 
 MarketsItem.propTypes = {
