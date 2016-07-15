@@ -1,0 +1,27 @@
+.login-buttons {
+  float: right;
+}
+.login-button {
+  margin-left: 5px;
+}
+.login-facebook {
+  color: #3b5998;
+
+  &:hover {
+    color: #3b5998;
+  }
+}
+.login-twitter {
+  color: #1da1f2;
+
+  &:hover {
+    color: #1da1f2;
+  }
+}
+.login-google {
+  color: #db4437;
+
+  &:hover {
+    color: #db4437;
+  }
+}

@@ -4,7 +4,7 @@
 
 /* global fetch */
 import 'whatwg-fetch'
-import conf from 'app.conf.json'
+import {marketsUri} from 'app.conf.json'
 
 export function requestMarketsList (query) {
   return { type: 'REQUEST_MARKETS_LIST', query }
@@ -22,7 +22,7 @@ export function fetchMarketsList (query) {
   return function (dispatch) {
     dispatch(requestMarketsList(query))
     return fetch(
-      conf.marketsUri
+      marketsUri
     )
     .then(
       (resp) => resp.json()
@@ -49,7 +49,7 @@ export function fetchMarketsItem (id) {
   return function (dispatch) {
     dispatch(requestMarketsItem(id))
     return fetch(
-      `${conf.marketsUri}/${id}`
+      `${marketsUri}/${id}`
     )
     .then(
       (resp) => resp.json()

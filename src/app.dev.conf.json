@@ -1,3 +1,8 @@
 {
-  "marketsUri": "http://localhost:3004/markets"
+  "marketsUri": "http://localhost:3004/markets",
+  "loginButtons": {
+    "facebook": "http://localhost:3003/facebook/connect",
+    "twitter": "http://localhost:3003/twitter/connect",
+    "google": "http://localhost:3003/google/connect"
+  }
 }
