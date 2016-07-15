@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { Router, Route, hashHistory } from 'react-router'
+import {Router, Route, Redirect, hashHistory} from 'react-router'
 import App from '../components/app'
 import MarketsList from '../containers/marketsList'
 import MarketsItem from '../containers/marketsItem'
@@ -20,6 +20,7 @@ let RouterProxy = ({
         onEnter={onMarketsListEnter}
         component={MarketsList}
       />
+      <Redirect from='/index' to='/' />
       <Route
         path='/markets/:id'
         onEnter={onMarketsItemEnter}
