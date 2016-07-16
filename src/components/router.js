@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import {Router, Route, Redirect, hashHistory} from 'react-router'
+import {Router, Route, Redirect, hashHistory as history} from 'react-router'
 import App from '../components/app'
 import MarketsList from '../containers/marketsList'
 import MarketsItem from '../containers/marketsItem'
@@ -13,7 +13,7 @@ let RouterProxy = ({
   onMarketsListEnter,
   onMarketsItemEnter
 }) => (
-  <Router history={hashHistory}>
+  <Router history={history}>
     <Route component={App}>
       <Route
         path='/'
