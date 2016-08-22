@@ -5,19 +5,10 @@
 
 import React, { PropTypes } from 'react'
 import Loader from './loader'
-
-const Item = ({name}) => (
-  <article className='markets-item'>
-    <h3>{name}</h3>
-  </article>
-)
-
-Item.propTypes = {
-  name: PropTypes.string.isRequired
-}
+import ItemBase from './itemBase'
 
 const MarketsItem = ({isFetching, data}) => (
-  isFetching ? <Loader /> : <Item {...data} />
+  isFetching ? <Loader /> : <ItemBase className='markets-item' {...data} />
 )
 
 MarketsItem.propTypes = {
