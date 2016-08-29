@@ -5,17 +5,18 @@
 /* global fetch */
 import 'whatwg-fetch'
 import {marketsUri} from 'app.conf.json'
+import m from './manifest'
 
 export function requestMarketsList (query) {
-  return { type: 'REQUEST_MARKETS_LIST', query }
+  return { type: m.REQUEST_MARKETS_LIST, query }
 }
 
 export function receiveMarketsList (data) {
-  return { type: 'RECEIVE_MARKETS_LIST', data }
+  return { type: m.RECEIVE_MARKETS_LIST, data }
 }
 
 export function resetMarketsList () {
-  return { type: 'RESET_MARKETS_LIST' }
+  return { type: m.RESET_MARKETS_LIST }
 }
 
 export function fetchMarketsList (query) {
@@ -34,15 +35,15 @@ export function fetchMarketsList (query) {
 }
 
 export function requestMarketsItem (id) {
-  return { type: 'REQUEST_MARKETS_ITEM', id }
+  return { type: m.REQUEST_MARKETS_ITEM, id }
 }
 
 export function receiveMarketsItem (data) {
-  return { type: 'RECEIVE_MARKETS_ITEM', data }
+  return { type: m.RECEIVE_MARKETS_ITEM, data }
 }
 
 export function resetMarketsItem () {
-  return { type: 'RESET_MARKETS_ITEM' }
+  return { type: m.RESET_MARKETS_ITEM }
 }
 
 export function fetchMarketsItem (id) {
