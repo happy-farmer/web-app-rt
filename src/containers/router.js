@@ -12,6 +12,9 @@ import {
   resetMarketsItem
 } from '../actions/markets'
 
+const mapStateToProps = (state) => ({
+})
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onMarketsListEnter (ev) {
@@ -29,9 +32,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-
-const mapStateToProps = (state) => ({
-})
 
 const Router = connect(
   mapStateToProps,
