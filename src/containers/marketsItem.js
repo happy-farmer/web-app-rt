@@ -4,6 +4,10 @@
 
 import { connect } from 'react-redux'
 import Component from '../components/marketsItem'
+import {
+  updateMarketsItem,
+  updatedMarketsItem
+} from '../actions/markets'
 
 const mapStateToProps = (state) => {
   let {
@@ -17,8 +21,13 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
 const MarketsItem = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Component)
 
 export default MarketsItem
