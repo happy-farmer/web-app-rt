@@ -7,7 +7,7 @@ import Component from '../components/marketsItem'
 import {
   updateMarketsItem,
   updatedMarketsItem
-} from '../actions/markets'
+} from '../actions/marketsItem'
 
 const mapStateToProps = (state) => {
   let {

@@ -6,11 +6,13 @@
 import { connect } from 'react-redux'
 import Component from '../components/router'
 import {
-  fetchMarketsList,
-  resetMarketsList,
   fetchMarketsItem,
   resetMarketsItem
-} from '../actions/markets'
+} from '../actions/marketsItem'
+import {
+  fetchMarketsList,
+  resetMarketsList
+} from '../actions/marketsList'
 
 const mapStateToProps = (state) => ({
 })
