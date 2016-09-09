@@ -5,7 +5,9 @@ import m from '../actions/manifest'
 const DEFAULT = {
   id: null,
   isFetching: false,
-  data: {}
+  data: {},
+  isUpdating: false,
+  prevData: {}
 }
 function marketsItemData (state = DEFAULT, action) {
   switch (action.type) {
@@ -22,6 +24,16 @@ function marketsItemData (state = DEFAULT, action) {
       })
     case m.RESET_MARKETS_ITEM:
       return Object.assign({}, state, DEFAULT)
+    case m.UPDATE_START_MARKETS_ITEM:
+      return Object.assign({}, state, {
+        isUpdating: true,
+        id: action.id,
+        data: action.data
+      })
+    case m.UPDATE_DONE_MARKETS_ITEM:
+      return Object.assign({}, state, {
+        isUpdating: false
+      })
     default:
       return state
   }

@@ -19,7 +19,7 @@ export function resetMarketsItem () {
   return { type: m.RESET_MARKETS_ITEM }
 }
 
-export function fetchMarketsItem (id) {
+export function getMarketsItem (id) {
   return function (dispatch) {
     dispatch(requestMarketsItem(id))
     return fetch(
@@ -34,8 +34,17 @@ export function fetchMarketsItem (id) {
   }
 }
 
-export function updateMarketsItem ({id, data}) {
+export function updateStartMarketsItem (id, data) {
+  return { type: m.UPDATE_START_MARKETS_ITEM, id }
+}
+
+export function updateDoneMarketsItem (data) {
+  return { type: m.UPDATE_DONE_MARKETS_ITEM, data }
+}
+
+export function patchMarketsItem ({id, data}) {
   return function (dispatch) {
+    dispatch(updateStartMarketsItem(id, data))
     return fetch(`${marketsUri}/${id}`, {
       method: 'PATCH',
       headers: {
@@ -48,7 +57,7 @@ export function updateMarketsItem ({id, data}) {
       (resp) => resp.json()
     )
     .then(
-      (data) => dispatch()
+      (data) => dispatch(updateDoneMarketsItem(data))
     )
   }
 }

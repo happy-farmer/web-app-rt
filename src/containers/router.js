@@ -6,7 +6,7 @@
 import { connect } from 'react-redux'
 import Component from '../components/router'
 import {
-  fetchMarketsItem,
+  getMarketsItem,
   resetMarketsItem
 } from '../actions/marketsItem'
 import {
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onMarketsItemEnter (ev) {
       let id = ev.params.id
-      dispatch(fetchMarketsItem(id))
+      dispatch(getMarketsItem(id))
     },
     onMarketsItemLeave (ev) {
       dispatch(resetMarketsItem())

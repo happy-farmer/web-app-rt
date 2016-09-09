@@ -25,7 +25,9 @@ import marketsItemData from './marketsItemData'
     marketsItemData: {
       id: null,
       isFetching: false,
-      data: {}
+      data: {},
+      isUpdating: false,
+      prevData: {}
     }
   }
 */

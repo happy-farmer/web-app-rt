@@ -5,8 +5,7 @@
 import { connect } from 'react-redux'
 import Component from '../components/marketsItem'
 import {
-  updateMarketsItem,
-  updatedMarketsItem
+  patchMarketsItem
 } from '../actions/marketsItem'
 
 const mapStateToProps = (state) => {
@@ -22,7 +21,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-
+  omMarketsItemUpdate: patchMarketsItem
 })
 
 const MarketsItem = connect(
