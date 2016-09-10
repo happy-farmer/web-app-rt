@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  omMarketsItemUpdate: patchMarketsItem
+  onMarketsItemUpdate: patchMarketsItem
 })
 
 const MarketsItem = connect(
