@@ -10,7 +10,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import appReducers from './reducers'
-import Router from './containers/router'
+import Router from './containers/routerCont'
 
 let store = createStore(
   appReducers,

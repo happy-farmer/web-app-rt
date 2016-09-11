@@ -1,9 +1,9 @@
 /**
- * @module containers/marketsItem
+ * @module containers/marketsItemCont
  */
 
 import { connect } from 'react-redux'
-import Component from '../components/marketsItem'
+import marketsItemCont from '../components/marketsItem'
 import {
   patchMarketsItem
 } from '../actions/marketsItem'
@@ -24,9 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
   onMarketsItemUpdate: patchMarketsItem
 })
 
-const MarketsItem = connect(
+const MarketsItemCont = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Component)
+)(marketsItemCont)
 
-export default MarketsItem
+export default MarketsItemCont

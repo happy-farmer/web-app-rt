@@ -5,7 +5,11 @@
 
 import React, { PropTypes } from 'react'
 
-let EditableDescription = ({description, updateDescription}) => {
+let EditableDescription = ({
+  description,
+  startEditing,
+  updateDescription
+}) => {
   return (
     <p>
     {

@@ -1,10 +1,10 @@
 /**
- * @module containers/router
+ * @module containers/routerCont
  * @description Router proxy container for onEnter/onLeave
  */
 
 import { connect } from 'react-redux'
-import Component from '../components/router'
+import Router from '../components/router'
 import {
   getMarketsItem,
   resetMarketsItem
@@ -35,9 +35,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Router = connect(
+const RouterCont = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Component)
+)(Router)
 
-export default Router
+export default RouterCont
