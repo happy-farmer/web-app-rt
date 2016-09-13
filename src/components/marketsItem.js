@@ -17,7 +17,6 @@ const MarketsItem = ({isFetching, data}) => (
 
 MarketsItem.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  onMarketsItemUpdate: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 }
 
