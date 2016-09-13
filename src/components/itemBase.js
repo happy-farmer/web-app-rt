@@ -4,16 +4,15 @@
  */
 
 import React, { PropTypes } from 'react'
-import EditableDescription from './editableDescription'
+import EditableDescriptionCont from '../containers/editableDescriptionCont'
 
-let ItemBase = ({id, name, description, className, onMarketsItemUpdate}) => {
-  let updateDescription = onMarketsItemUpdate.bind(this, id)
+let ItemBase = ({id, name, description, className}) => {
   return (
     <article className={className}>
       <h3>{name}</h3>
-      <EditableDescription
+      <EditableDescriptionCont
+        id={id}
         description={description}
-        updateDescription={updateDescription}
       />
     </article>
   )

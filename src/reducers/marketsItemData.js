@@ -5,8 +5,9 @@ import m from '../actions/manifest'
 const DEFAULT = {
   id: null,
   isFetching: false,
-  data: {},
   isUpdating: false,
+  isEditing: false,
+  data: {},
   prevData: {}
 }
 function marketsItemData (state = DEFAULT, action) {

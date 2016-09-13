@@ -4,9 +4,6 @@
 
 import { connect } from 'react-redux'
 import marketsItemCont from '../components/marketsItem'
-import {
-  patchMarketsItem
-} from '../actions/marketsItem'
 
 const mapStateToProps = (state) => {
   let {
@@ -20,13 +17,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onMarketsItemUpdate: patchMarketsItem
-})
-
 const MarketsItemCont = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(marketsItemCont)
 
 export default MarketsItemCont

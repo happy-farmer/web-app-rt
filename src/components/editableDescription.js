@@ -6,16 +6,16 @@
 import React, { PropTypes } from 'react'
 
 let EditableDescription = ({
+  id,
   description,
-  startEditing,
-  updateDescription
+  onDescriptionUpdate
 }) => {
   return (
     <p>
     {
       description ||
         <a
-          onClick={startEditing}
+          onClick={onDescriptionUpdate}
           href='javascript:void(0)'>
             Add description!
         </a>

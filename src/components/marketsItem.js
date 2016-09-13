@@ -7,12 +7,11 @@ import React, { PropTypes } from 'react'
 import Loader from './loader'
 import ItemBase from './itemBase'
 
-const MarketsItem = ({isFetching, onMarketsItemUpdate, data}) => (
+const MarketsItem = ({isFetching, data}) => (
   isFetching
     ? <Loader />
     : <ItemBase
       className='markets-item'
-      onMarketsItemUpdate={onMarketsItemUpdate}
       {...data} />
 )
 
