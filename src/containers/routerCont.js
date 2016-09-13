@@ -8,11 +8,11 @@ import Router from '../components/router'
 import {
   getMarketsItem,
   resetMarketsItem
-} from '../actions/marketsItem'
+} from '../actions/marketsItemAct'
 import {
   fetchMarketsList,
   resetMarketsList
-} from '../actions/marketsList'
+} from '../actions/marketsListAct'
 
 const mapStateToProps = (state) => ({
 })

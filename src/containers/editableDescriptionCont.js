@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import EditableDescription from '../components/editableDescription'
 import {
   patchMarketsItem
-} from '../actions/marketsItem'
+} from '../actions/marketsItemAct'
 
 const mapStateToProps = (state) => {
   let {

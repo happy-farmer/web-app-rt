@@ -1,5 +1,5 @@
 /**
- * @module actions/markets
+ * @module actions/marketsListAct
  */
 
 /* global fetch */
