@@ -8,25 +8,36 @@ import React, { PropTypes } from 'react'
 let EditableDescription = ({
   id,
   description,
-  onDescriptionUpdate
+  isEditing,
+  onDescriptionChange,
+  onDescriptionUpdate,
+  onDescriptionEditStop,
+  onDescriptionEditStart
 }) => {
   return (
-    <p>
-    {
-      description ||
-        <a
-          onClick={onDescriptionUpdate}
-          href='javascript:void(0)'>
-            Add description!
-        </a>
-    }
-    </p>
+    <div>
+      {
+        isEditing
+        ? <div>
+          <textarea onChange={onDescriptionChange}>{description}</textarea>
+          <button onClick={onDescriptionUpdate}>Save</button>
+          <button onClick={onDescriptionEditStop}>Cancel</button>
+        </div>
+        : <p>
+          {description}
+          <a
+            onClick={onDescriptionEditStart}
+            href='javascript:void(0)'>
+              Edit description!
+          </a>
+        </p>
+      }
+    </div>
   )
 }
 
 EditableDescription.propTypes = {
-  description: PropTypes.string,
-  updateDescription: PropTypes.func
+  description: PropTypes.string
 }
 
 export default EditableDescription

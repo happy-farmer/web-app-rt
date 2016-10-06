@@ -34,18 +34,19 @@ export function getMarketsItem (id) {
   }
 }
 
-export function updateStartMarketsItem (id, data) {
-  return { type: m.UPDATE_START_MARKETS_ITEM, id }
+export function updateStartMarketsItem () {
+  return { type: m.UPDATE_START_MARKETS_ITEM }
 }
 
 export function updateDoneMarketsItem (data) {
   return { type: m.UPDATE_DONE_MARKETS_ITEM, data }
 }
 
-export function patchMarketsItem ({id, data}) {
-  return function (dispatch) {
-    dispatch(updateStartMarketsItem(id, data))
-    return fetch(`${marketsUri}/${id}`, {
+export function patchMarketsItem () {
+  return function (dispatch, getState) {
+    let data = getState().marketsItemData.data
+    dispatch(updateStartMarketsItem())
+    return fetch(`${marketsUri}/${data.id}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -60,4 +61,24 @@ export function patchMarketsItem ({id, data}) {
       (data) => dispatch(updateDoneMarketsItem(data))
     )
   }
+}
+
+export function editStartMarketsItem () {
+  return { type: m.EDIT_START_MARKETS_ITEM }
+}
+
+export function changeLocalMarketsItem (data) {
+  return { type: m.CHANGE_LOCAL_MARKETS_ITEM, data }
+}
+
+export function stashMarketsItem (data) {
+  return { type: m.STASH_MARKETS_ITEM, data }
+}
+
+export function editEndMarketsItem () {
+  return { type: m.EDIT_END_MARKETS_ITEM }
+}
+
+export function rollbackMarketsItem () {
+  return { type: m.ROLLBACK_MARKETS_ITEM }
 }
