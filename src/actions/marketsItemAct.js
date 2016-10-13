@@ -63,8 +63,8 @@ export function patchMarketsItem () {
   }
 }
 
-export function editStartMarketsItem () {
-  return { type: m.EDIT_START_MARKETS_ITEM }
+export function editStartMarketsItem (item) {
+  return { type: m.EDIT_START_MARKETS_ITEM, item }
 }
 
 export function changeLocalMarketsItem (data) {
@@ -75,8 +75,8 @@ export function stashMarketsItem (data) {
   return { type: m.STASH_MARKETS_ITEM, data }
 }
 
-export function editEndMarketsItem () {
-  return { type: m.EDIT_END_MARKETS_ITEM }
+export function editEndMarketsItem (item) {
+  return { type: m.EDIT_END_MARKETS_ITEM, item }
 }
 
 export function rollbackMarketsItem () {

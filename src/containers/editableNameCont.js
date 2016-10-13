@@ -1,9 +1,9 @@
 /**
- * @module containers/editableDescriptionCont
+ * @module containers/editableNameCont
  */
 
 import { connect } from 'react-redux'
-import EditableDescription from '../components/editableDescription'
+import EditableName from '../components/editableName'
 import {
   patchMarketsItem,
   changeLocalMarketsItem,
@@ -28,32 +28,32 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onDescriptionUpdate () {
-    let item = 'description'
+  onNameUpdate () {
+    let item = 'name'
     dispatch(editEndMarketsItem(item))
     dispatch(patchMarketsItem())
   },
-  onDescriptionChange (ev) {
-    let description = ev.target.value
+  onNameChange (ev) {
+    let name = ev.target.value
     dispatch(changeLocalMarketsItem({
-      description
+      name
     }))
   },
-  onDescriptionEditStart () {
-    let item = 'description'
+  onNameEditStart () {
+    let item = 'name'
     dispatch(stashMarketsItem())
     dispatch(editStartMarketsItem(item))
   },
-  onDescriptionEditStop () {
-    let item = 'description'
+  onNameEditStop () {
+    let item = 'name'
     dispatch(editEndMarketsItem(item))
     dispatch(rollbackMarketsItem())
   }
 })
 
-const EditableDescriptionCont = connect(
+const EditableNameCont = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditableDescription)
+)(EditableName)
 
-export default EditableDescriptionCont
+export default EditableNameCont

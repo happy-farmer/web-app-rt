@@ -5,11 +5,15 @@
 
 import React, { PropTypes } from 'react'
 import EditableDescriptionCont from '../containers/editableDescriptionCont'
+import EditableNameCont from '../containers/editableNameCont'
 
 let ItemBase = ({id, name, description, className}) => {
   return (
     <article className={className}>
-      <h3>{name}</h3>
+      <EditableNameCont
+        id={id}
+        name={name}
+      />
       <EditableDescriptionCont
         id={id}
         description={description}
@@ -20,8 +24,7 @@ let ItemBase = ({id, name, description, className}) => {
 
 ItemBase.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  onMarketsItemUpdate: PropTypes.func
+  description: PropTypes.string
 }
 
 export default ItemBase

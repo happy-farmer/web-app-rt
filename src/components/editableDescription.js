@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react'
 let EditableDescription = ({
   id,
   description,
-  isEditing,
+  editing,
   onDescriptionChange,
   onDescriptionUpdate,
   onDescriptionEditStop,
@@ -17,9 +17,12 @@ let EditableDescription = ({
   return (
     <div>
       {
-        isEditing
+        editing.has('description')
         ? <div>
-          <textarea onChange={onDescriptionChange}>{description}</textarea>
+          <textarea
+            onChange={onDescriptionChange}
+            value={description}
+          />
           <button onClick={onDescriptionUpdate}>Save</button>
           <button onClick={onDescriptionEditStop}>Cancel</button>
         </div>
