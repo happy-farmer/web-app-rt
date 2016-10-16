@@ -2,11 +2,12 @@
  * @module reducers/marketsItemData
  */
 import m from '../actions/manifest'
+const emptySet = new Set([])
 const DEFAULT = {
   id: null,
   isFetching: false,
   isUpdating: false,
-  editing: new Set([]),
+  editing: emptySet,
   data: {},
   stashedData: {}
 }
@@ -48,19 +49,31 @@ function marketsItemData (state = DEFAULT, action) {
       })
     }
     case m.CHANGE_LOCAL_MARKETS_ITEM:
-      let data = {
-        data: Object.assign({}, state.data, action.data)
-      }
-      return Object.assign({}, state, data)
+      let data = Object.assign({}, state.data, action.data)
+      return Object.assign({}, state, {
+        data
+      })
     case m.STASH_MARKETS_ITEM:
+      let stashedData = Object.assign(
+        {},
+        state.data[action.item],
+        state.stashedData[action.item]
+      )
+      debugger
       return Object.assign({}, state, {
-        stashedData: state.data
+        stashedData
       })
-    case m.ROLLBACK_MARKETS_ITEM:
+    case m.ROLLBACK_MARKETS_ITEM: {
+      let data = Object.assign(
+        {},
+        state.stashedData[action.item],
+        state.data[action.item]
+      )
+      debugger
       return Object.assign({}, state, {
-        data: state.stashedData,
-        stashedData: {}
+        data
       })
+    }
     default:
       return state
   }
