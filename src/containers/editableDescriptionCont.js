@@ -30,16 +30,16 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onDescriptionUpdate (id, value) {
+  onDescriptionUpdate (id, description) {
     dispatch(editEndMarketsItem(propName))
     dispatch(patchMarketsItem(id, {
-      [propName]: value
+      [propName]: description
     }))
   },
   onDescriptionChange (ev) {
-    let value = ev.target.value
+    let description = ev.target.value
     dispatch(changeLocalMarketsItem({
-      [propName]: value
+      [propName]: description
     }))
   },
   onDescriptionEditStart () {

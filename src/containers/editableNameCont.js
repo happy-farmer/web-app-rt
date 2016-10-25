@@ -13,6 +13,8 @@ import {
   rollbackMarketsItem
 } from '../actions/marketsItemAct'
 
+const propName = 'name'
+
 const mapStateToProps = (state) => {
   let {
     isUpdating,
@@ -22,32 +24,31 @@ const mapStateToProps = (state) => {
 
   return {
     isUpdating,
-    editing,
+    isEditing: editing.has(propName),
     data
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onNameUpdate () {
-    let item = 'name'
-    dispatch(editEndMarketsItem(item))
-    dispatch(patchMarketsItem())
+  onNameUpdate (id, name) {
+    dispatch(editEndMarketsItem(propName))
+    dispatch(patchMarketsItem(id, {
+      [propName]: name
+    }))
   },
   onNameChange (ev) {
     let name = ev.target.value
     dispatch(changeLocalMarketsItem({
-      name
+      [propName]: name
     }))
   },
   onNameEditStart () {
-    let item = 'name'
-    dispatch(stashMarketsItem())
-    dispatch(editStartMarketsItem(item))
+    dispatch(stashMarketsItem(propName))
+    dispatch(editStartMarketsItem(propName))
   },
   onNameEditStop () {
-    let item = 'name'
-    dispatch(editEndMarketsItem(item))
-    dispatch(rollbackMarketsItem())
+    dispatch(editEndMarketsItem(propName))
+    dispatch(rollbackMarketsItem(propName))
   }
 })
 
