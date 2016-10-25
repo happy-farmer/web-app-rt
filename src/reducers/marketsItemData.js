@@ -1,7 +1,10 @@
 /**
  * @module reducers/marketsItemData
  */
+
+import Immutable from 'seamless-immutable'
 import m from '../actions/manifest'
+
 const emptySet = new Set([])
 const DEFAULT = {
   id: null,
@@ -56,22 +59,24 @@ function marketsItemData (state = DEFAULT, action) {
     case m.STASH_MARKETS_ITEM:
       let stashedData = Object.assign(
         {},
-        state.data[action.item],
-        state.stashedData[action.item]
+        state.stashedData,
+        {
+          [action.item]: state.data[action.item]
+        }
       )
-      debugger
       return Object.assign({}, state, {
         stashedData
       })
     case m.ROLLBACK_MARKETS_ITEM: {
       let data = Object.assign(
         {},
-        state.stashedData[action.item],
-        state.data[action.item]
+        state.data,
+        {[action.item]: state.stashedData[action.item]}
       )
-      debugger
+      let stashedData = Immutable.from(state.stashedData).without(action.item)
       return Object.assign({}, state, {
-        data
+        data,
+        stashedData
       })
     }
     default:
