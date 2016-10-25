@@ -43,7 +43,7 @@ export function updateDoneMarketsItem (data) {
 }
 
 export function patchMarketsItem (id, data) {
-  return function (dispatch, getState) {
+  return function (dispatch) {
     dispatch(updateStartMarketsItem())
     return fetch(`${marketsUri}/${id}`, {
       method: 'PATCH',
