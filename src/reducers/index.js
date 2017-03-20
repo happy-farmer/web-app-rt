@@ -3,8 +3,6 @@
  * @description Default reducer for redux architeture
  */
 
-import { combineReducers } from 'redux'
-
 // import userData from './userData'
 import marketsListData from './marketsListData'
 import marketsItemData from './marketsItemData'
@@ -33,10 +31,8 @@ import marketsItemData from './marketsItemData'
   }
 */
 
-const appReducers = combineReducers({
+export default {
   // userData,
   marketsListData,
   marketsItemData
-})
-
-export default appReducers
+}

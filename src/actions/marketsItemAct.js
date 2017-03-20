@@ -19,7 +19,7 @@ export function resetMarketsItem () {
   return { type: m.RESET_MARKETS_ITEM }
 }
 
-export function getMarketsItem (id) {
+export function fetchMarketsItem (id) {
   return function (dispatch) {
     dispatch(requestMarketsItem(id))
     return fetch(

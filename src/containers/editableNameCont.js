@@ -20,11 +20,11 @@ const mapStateToProps = (state) => {
     isUpdating,
     editing,
     data
-  } = state.marketsItemData
+  } = state.get('marketsItemData').toJS()
 
   return {
     isUpdating,
-    isEditing: editing.has(propName),
+    isEditing: editing.includes(propName),
     data
   }
 }

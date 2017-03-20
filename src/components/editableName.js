@@ -27,12 +27,24 @@ export default class EditableName extends Component {
       onNameEditStart
     } = this.props
 
+    const style = {
+      fontSize: 40,
+      fontWeight: 600,
+      lineHeight: '45px',
+      width: '100%',
+      magrin: '10px 0',
+      padding: 0,
+      border: 'none',
+      outline: 'none'
+    }
+
     return (
       <div>
         {
           isEditing
           ? <div>
             <input
+              style={style}
               type='text'
               onChange={onNameChange}
               value={name}
@@ -41,7 +53,7 @@ export default class EditableName extends Component {
             <button onClick={onNameEditStop}>Cancel</button>
           </div>
           : <div>
-            <h1>{name}</h1>
+            <h1 style={style}>{name}</h1>
             <a
               onClick={onNameEditStart}
               href='javascript:void(0)'>

@@ -2,82 +2,56 @@
  * @module reducers/marketsItemData
  */
 
-import Immutable from 'seamless-immutable'
+import { Map, Set } from 'immutable'
 import m from '../actions/manifest'
 
-const emptySet = new Set([])
-const DEFAULT = {
+const DEFAULT = Map({
   id: null,
   isFetching: false,
   isUpdating: false,
-  editing: emptySet,
+  editing: Set(),
   data: {},
   stashedData: {}
-}
+})
 function marketsItemData (state = DEFAULT, action) {
   switch (action.type) {
     case m.REQUEST_MARKETS_ITEM:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: true,
         id: action.id,
         data: {}
       })
+
     case m.RECEIVE_MARKETS_ITEM:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: false,
         data: action.data
       })
+
     case m.RESET_MARKETS_ITEM:
-      return Object.assign({}, state, DEFAULT)
+      return DEFAULT
+
     case m.UPDATE_START_MARKETS_ITEM:
-      return Object.assign({}, state, {
-        isUpdating: true
-      })
+      return state.set('isUpdating', true)
+
     case m.UPDATE_DONE_MARKETS_ITEM:
-      return Object.assign({}, state, {
-        isUpdating: false
-      })
-    case m.EDIT_START_MARKETS_ITEM: {
-      let editing = new Set(state.editing)
-      editing.add(action.item)
-      return Object.assign({}, state, {
-        editing
-      })
-    }
-    case m.EDIT_END_MARKETS_ITEM: {
-      let editing = new Set(state.editing)
-      editing.delete(action.item)
-      return Object.assign({}, state, {
-        editing
-      })
-    }
+      return state.set('isUpdating', false)
+
+    case m.EDIT_START_MARKETS_ITEM:
+      return state.update('editing', set => set.add(action.item))
+
+    case m.EDIT_END_MARKETS_ITEM:
+      return state.update('editing', set => set.delete(action.item))
+
     case m.CHANGE_LOCAL_MARKETS_ITEM:
-      let data = Object.assign({}, state.data, action.data)
-      return Object.assign({}, state, {
-        data
-      })
+      return state.mergeIn(['data'], action.data)
+
     case m.STASH_MARKETS_ITEM:
-      let stashedData = Object.assign(
-        {},
-        state.stashedData,
-        {
-          [action.item]: state.data[action.item]
-        }
-      )
-      return Object.assign({}, state, {
-        stashedData
-      })
+      return state.setIn(['stashedData'], state.getIn(['data']))
+
     case m.ROLLBACK_MARKETS_ITEM: {
-      let data = Object.assign(
-        {},
-        state.data,
-        {[action.item]: state.stashedData[action.item]}
-      )
-      let stashedData = Immutable.from(state.stashedData).without(action.item)
-      return Object.assign({}, state, {
-        data,
-        stashedData
-      })
+      const stashedItemData = state.getIn(['stashedData', action.item])
+      return state.setIn(['data', action.item], stashedItemData)
     }
     default:
       return state

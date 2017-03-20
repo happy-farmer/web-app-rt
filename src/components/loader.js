@@ -8,7 +8,7 @@ import '../styles/loader.css'
 
 const Loader = () => (
   <article className='loader'>
-    <i className='fa fa-spinner fa-spin fa-3x fa-fw'></i>
+    <i className='fa fa-spinner fa-spin fa-3x fa-fw' aria-hidden='true' />
     <span className='sr-only'>Loading...</span>
   </article>
 )

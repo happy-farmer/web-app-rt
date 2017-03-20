@@ -3,10 +3,10 @@
  * @description Contains header logic
  */
 
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 import logo from '../images/logo.png'
 import '../styles/header.css'
-import {Link} from 'react-router'
+import { Link } from 'react-router-dom'
 import LoginButtons from './loginButtons'
 
 const Header = ({ userData }) => (

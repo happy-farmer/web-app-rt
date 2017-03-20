@@ -3,23 +3,30 @@
  *
  */
 
-import React, { PropTypes } from 'react'
+import React, { PropTypes, PureComponent } from 'react'
 import MarketsListItem from './marketsListItem'
 import Loader from './loader'
 
-const MarketsList = ({isFetching, data}) => (
-  isFetching
-  ? <Loader />
-  : (
-    <div className='markets-list'>
-        {data.map((el, ix) => <MarketsListItem key={ix} {...el} />)}
+export default class MarketsList extends PureComponent {
+  static propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    data: PropTypes.array.isRequired
+  }
+
+  componentDidMount () {
+    this.props.fetchMarketsList()
+  }
+
+  componentWillUnmount () {
+    this.props.resetMarketsList()
+  }
+
+  render () {
+    const {isFetching, data} = this.props
+    return isFetching
+    ? <Loader />
+    : <div className='markets-list'>
+      {data.map((el) => <MarketsListItem key={el.id} {...el} />)}
     </div>
-  )
-)
-
-MarketsList.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  data: PropTypes.array.isRequired
+  }
 }
-
-export default MarketsList

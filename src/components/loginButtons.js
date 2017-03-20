@@ -42,7 +42,7 @@ let Button = ({provider, url, buttonTitle, buttonClass, iconClass}) => (
     data-provider={provider}
     title={buttonTitle}
     className={buttonClass}>
-    <i className={iconClass} aria-hidden='true'></i>
+    <i className={iconClass} aria-hidden='true' />
   </a>
 )
 

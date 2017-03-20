@@ -4,17 +4,17 @@
  */
 
 import React, { PropTypes } from 'react'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 
-const MarketsListItem = ({name, location, id}) => (
-  <section className='markets-list-item'>
+const MarketsListItem = ({name, location, id}) => {
+  return <section className='markets-list-item'>
     <h3>
       <Link to={`/markets/${id}`} title={name}>
         {name}
       </Link>
     </h3>
   </section>
-)
+}
 
 MarketsListItem.propTypes = {
   name: PropTypes.string.isRequired,

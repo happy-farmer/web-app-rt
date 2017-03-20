@@ -4,22 +4,43 @@
  */
 
 import React from 'react'
+import { Map } from 'immutable'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
+import thunkMw from 'redux-thunk'
+import createHistory from 'history/createHashHistory'
+import {
+  ConnectedRouter,
+  routerMiddleware
+} from 'react-router-redux'
+import {
+  combineReducers
+} from 'redux-immutable'
 
+import routingReducer from './reducers/routingData'
 import appReducers from './reducers'
-import Router from './containers/routerCont'
+import App from './components/app'
 
-let store = createStore(
-  appReducers,
-  applyMiddleware(thunkMiddleware)
+const history = createHistory()
+const routerMw = routerMiddleware(history)
+
+const rootReducer = combineReducers({
+  ...appReducers,
+  routing: routingReducer
+})
+const initialState = Map()
+const store = createStore(
+  rootReducer,
+  initialState,
+  applyMiddleware(routerMw, thunkMw)
 )
 
 render(
   <Provider store={store}>
-    <Router />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('app')
 )

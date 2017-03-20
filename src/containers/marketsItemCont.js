@@ -4,12 +4,16 @@
 
 import { connect } from 'react-redux'
 import marketsItemCont from '../components/marketsItem'
+import {
+  fetchMarketsItem,
+  resetMarketsItem
+} from '../actions/marketsItemAct'
 
 const mapStateToProps = (state) => {
   let {
     isFetching,
     data
-  } = state.marketsItemData
+  } = state.get('marketsItemData').toJS()
 
   return {
     isFetching,
@@ -17,8 +21,14 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchMarketItem (id) { dispatch(fetchMarketsItem(id)) },
+  resetMarketItem (id) { dispatch(resetMarketsItem(id)) }
+})
+
 const MarketsItemCont = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(marketsItemCont)
 
 export default MarketsItemCont
