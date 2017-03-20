@@ -1,11 +1,12 @@
 var path = require('path')
 var autoprefixer = require('autoprefixer')
 var StatsPlugin = require('stats-webpack-plugin')
+var webpack = require('webpack')
 
 module.exports = {
   devtool: 'eval',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
       'app.conf.json': path.join(__dirname, 'src/app.dev.conf.json')
     }
@@ -23,16 +24,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: path.join(__dirname, 'src'),
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       {
         test: /\.(jpe?g|png)$/,
         include: path.join(__dirname, 'src/images'),
-        loader: 'url?limit=25000'
+        loader: 'url-loader?limit=25000'
       },
       {
         test: /.(ico|gif|svg|eot|ttf|woff|woff2)(\?.+)?$/,
-        loader: 'url?limit=50000'
+        loader: 'url-loader?limit=50000'
       },
       {
         test: /\.s?css$/,
@@ -41,13 +42,18 @@ module.exports = {
       }
     ]
   },
-  postcss: function () {
-    return [autoprefixer]
-  },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: './src',
+        postcss: [
+          autoprefixer
+        ]
+      }
+    }),
     new StatsPlugin('stats.json', {
       chunkModules: true,
-      exclude: [/node_modules[\\\/]react/]
+      exclude: [/node_modules[\\/]react/]
     })
   ]
 }
