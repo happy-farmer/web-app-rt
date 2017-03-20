@@ -3,28 +3,25 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class EditableDescription extends Component {
-  constructor () {
-    super()
-    this.patchDescription = this.patchDescription.bind(this)
-  }
-  patchDescription () {
+export default class EditableDescription extends PureComponent {
+  static propToEdit = 'description'
+  patchDescription = () => {
     let {
       id,
       description,
-      onDescriptionUpdate
+      onUpdate
     } = this.props
-    onDescriptionUpdate(id, description)
+    onUpdate(id, description)
   }
   render () {
     let {
       description,
       isEditing,
-      onDescriptionChange,
-      onDescriptionEditStop,
-      onDescriptionEditStart
+      onChange,
+      onEditStop,
+      onEditStart
     } = this.props
 
     return (
@@ -33,26 +30,18 @@ export default class EditableDescription extends Component {
           isEditing
           ? <div>
             <textarea
-              onChange={onDescriptionChange}
+              onChange={onChange}
               value={description}
             />
             <button onClick={this.patchDescription}>Save</button>
-            <button onClick={onDescriptionEditStop}>Cancel</button>
+            <button onClick={onEditStop}>Cancel</button>
           </div>
           : <p>
             {description}
-            <a
-              onClick={onDescriptionEditStart}
-              href='javascript:void(0)'>
-                Edit description!
-            </a>
+            <button onClick={onEditStart}>Edit description!</button>
           </p>
         }
       </div>
     )
   }
-}
-
-EditableDescription.propTypes = {
-  description: PropTypes.string
 }

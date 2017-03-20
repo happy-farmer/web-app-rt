@@ -3,28 +3,25 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class EditableName extends Component {
-  constructor () {
-    super()
-    this.patchName = this.patchName.bind(this)
-  }
-  patchName () {
+export default class EditableName extends PureComponent {
+  static propToEdit = 'name'
+  patchName = () => {
     let {
       id,
       name,
-      onNameUpdate
+      onUpdate
     } = this.props
-    onNameUpdate(id, name)
+    onUpdate(id, name)
   }
   render () {
     let {
       name,
       isEditing,
-      onNameChange,
-      onNameEditStop,
-      onNameEditStart
+      onChange,
+      onEditStop,
+      onEditStart
     } = this.props
 
     const style = {
@@ -46,26 +43,18 @@ export default class EditableName extends Component {
             <input
               style={style}
               type='text'
-              onChange={onNameChange}
+              onChange={onChange}
               value={name}
             />
             <button onClick={this.patchName}>Save</button>
-            <button onClick={onNameEditStop}>Cancel</button>
+            <button onClick={onEditStop}>Cancel</button>
           </div>
           : <div>
             <h1 style={style}>{name}</h1>
-            <a
-              onClick={onNameEditStart}
-              href='javascript:void(0)'>
-                Edit Name!
-            </a>
+            <button onClick={onEditStart}>Edit Name!</button>
           </div>
         }
       </div>
     )
   }
-}
-
-EditableName.propTypes = {
-  name: PropTypes.string
 }

@@ -3,28 +3,31 @@
  *
  */
 
-import React, { PropTypes } from 'react'
-import EditableDescriptionCont from '../containers/editableDescriptionCont'
-import EditableNameCont from '../containers/editableNameCont'
+import React, { PropTypes, PureComponent } from 'react'
+import EditableItemCont from '../containers/editableItemCont'
+import EditableDescription from './editableDescription'
+import EditableName from './editableName'
 
-let ItemBase = ({id, name, description, className}) => {
-  return (
-    <article className={className}>
-      <EditableNameCont
-        id={id}
-        name={name}
-      />
-      <EditableDescriptionCont
-        id={id}
-        description={description}
-      />
-    </article>
-  )
+export default class ItemBase extends PureComponent {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string
+  }
+  render () {
+    const {id, name, description, className} = this.props
+    return (
+      <article className={className}>
+        <EditableItemCont>
+          <EditableName
+            id={id}
+            name={name}
+          />
+          <EditableDescription
+            id={id}
+            description={description}
+          />
+        </EditableItemCont>
+      </article>
+    )
+  }
 }
-
-ItemBase.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string
-}
-
-export default ItemBase
